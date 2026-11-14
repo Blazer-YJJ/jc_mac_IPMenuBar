@@ -1,0 +1,39 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: swiftc --version
+
+      - name: Build app bundle
+        run: make bundle
+
+      - name: Smoke test (binary runs and links AppKit)
+        run: |
+          file build/IPMenuBar.app/Contents/MacOS/IPMenuBar
+          plutil -lint build/IPMenuBar.app/Contents/Info.plist
+
+      - name: Zip bundle
+        run: ditto -c -k --keepParent build/IPMenuBar.app IPMenuBar.app.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: IPMenuBar.app
+          path: IPMenuBar.app.zip
+
+      - name: Attach to release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${GITHUB_REF_NAME}" IPMenuBar.app.zip --generate-notes
