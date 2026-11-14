@@ -39,7 +39,7 @@
 ### 从源码编译
 
 ```bash
-git clone https://github.com/Blazer-YJJ/jc_mac_ip_show.git
+git clone https://github.com/Blazer-YJJ/jc_mac_IPMenuBar.git
 cd ip-menubar
 
 make run       # 编译并直接运行（不装自启）
@@ -55,7 +55,7 @@ open build/IPMenuBar.app
 
 ### 直接用现成包
 
-到 [Releases](https://github.com/Blazer-YJJ/jc_mac_ip_show/releases) 下载 `IPMenuBar.app.zip` 解压，拖进「应用程序」即可。
+到 [Releases](https://github.com/Blazer-YJJ/jc_mac_IPMenuBar/releases) 下载 `IPMenuBar.app.zip` 解压，拖进「应用程序」即可。
 包是 ad-hoc 签名（没有 Apple 开发者账号），首次打开若被 Gatekeeper 拦下：
 
 ```bash

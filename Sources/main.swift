@@ -1,6 +1,6 @@
 //
 //  IPMenuBar — 在 macOS 菜单栏常驻显示本机局域网 IPv4
-//  https://github.com/Blazer-YJJ/jc_mac_ip_show
+//  https://github.com/Blazer-YJJ/jc_mac_IPMenuBar
 //
 //  纯 AppKit，无第三方依赖，无网络请求：地址全部来自本机 getifaddrs()。
 //
